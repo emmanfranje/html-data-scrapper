@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import os
 
 with open('champs.json', 'r') as file:
     config = json.load(file)
@@ -10,7 +11,7 @@ myChampPool = config['champions']
 lolurl = "https://www.leagueoflegends.com/en-us/news/game-updates/"
 response = requests.get(lolurl)
 patchNotesUrl = ""
-webhook = "https://discord.com/api/webhooks/1525815553443237983/ovuR_rcgKaAjZM2SXE0-aGrliVFTkT27n5A2rgLpjHffrqLFKShzWTxKsOp4Zh4KuBji"
+webhook = os.environ.get("DISCORD_WEBHOOK")
 
 
 if  response.status_code == 200:
