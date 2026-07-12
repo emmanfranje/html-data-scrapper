@@ -7,7 +7,6 @@ with open('champs.json', 'r') as file:
     config = json.load(file)
     
 myChampPool = config['champions']
-# def getLatestPatch():
 lolurl = "https://www.leagueoflegends.com/en-us/news/game-updates/"
 response = requests.get(lolurl)
 patchNotesUrl = ""
@@ -33,24 +32,19 @@ if  response.status_code == 200:
     for champName in myChampPool:
         champSummary = ""
         champ = soup.find(id = f"patch-{champName}")
-        # print (champName.capitalize())
         if champ is None:
-            # print("No changes")
             champSummary = "No changes"
             payload = {
                 "content": f"## **{champName.capitalize()}**\n{champSummary}"
             }
         else:
             for sibling in champ.next_siblings:
-                # print(sibling.name)
                 if sibling.name == "ul":
                     for li in sibling.find_all("li"):
-                        # print(li.text)
                         champSummary += f"{li.text}\n"
                 else:
                     # print(sibling.text)
                     champSummary += f"{sibling.text}\n"
-            # print(champSummary)
             
             payload = {
                 "content": f"## **{champName.capitalize()}**\n{champSummary}"

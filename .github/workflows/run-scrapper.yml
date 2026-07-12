@@ -2,7 +2,7 @@ name: Run Patch Notes Scrapper
 
 on:
   schedule:
-    - cron: '0 21 */14 * 3' #Every Thursday 9 PM GMT+8
+    - cron: '0 21 */14 * 3' #Every Thursday 5AM GMT+8
 
   workflow_dispatch:
 
