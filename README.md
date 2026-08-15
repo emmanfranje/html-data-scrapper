@@ -25,3 +25,8 @@ To change or add champions to track, update the 'champs.json' file int the root 
 ```
 
 The pipeline requires a GitHub repository secret named `DISCORD_WEBHOOK` containing your target Discord channel's webhook URL.
+
+## Why I built this
+
+League of Legends releases patch notes every two weeks, but I only care about changes affecting my champion pool. This project automatically retrieves the latest patch notes, extracts relevant champion changes, and sends them to Discord.
+
